@@ -16,7 +16,7 @@ public class Version {
     public static int compare(String version1, String version2) {
         int[] v1 = 补零(version1);
         int[] v2 = 补零(version2);
-        for (int i = 0;i < 3;i++){
+        for (int i = 0; i < 3; i++){
             if (v1[i] > v2[i]){
                 return 1;
             }else if (v1[i] < v2[i]){
