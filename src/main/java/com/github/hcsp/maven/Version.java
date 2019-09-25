@@ -41,7 +41,5 @@ public class Version {
         return fList;
     }
 
-    public static void main(String[] args) {
-        System.out.println(compare("5.1","5.1.8"));
-    }
+
 }
