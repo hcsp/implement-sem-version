@@ -29,7 +29,7 @@ public class Version {
 
     public static int[] parseToIntArray(String s) {
         int[] intArray = {0, 0, 0};
-        int flag1 = -1, flag2 = -1;//用来记录小数点位置
+        int flag1 = -1, flag2 = -1;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '.') {
                 if (flag1 == -1) {
