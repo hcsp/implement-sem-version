@@ -24,13 +24,12 @@ public class Version {
             return Integer.compare(v1[2], v2[2]);
         }
         return 0;
-
     }
 
     public static int[] parseToIntArray(String s) {
         int[] intArray = {0, 0, 0};
-        int flag1 = -1, flag2 = -1;//用来记录小数点位置
-        for (int i = 0; i < s.length(); i++) {
+        int flag1 = -1, flag2 = -1;
+        for (int i = 0;  i < s.length();  i++) {
             if (s.charAt(i) == '.') {
                 if (flag1 == -1) {
                     flag1 = i;
@@ -60,5 +59,4 @@ public class Version {
         }
         return 0;
     }
-
 }
