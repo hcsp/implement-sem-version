@@ -1,7 +1,5 @@
 package com.github.hcsp.maven;
 
-import java.util.Comparator;
-
 public class Version {
     /**
      * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个"语义化版本"
@@ -46,12 +44,12 @@ public class Version {
             return intArray;
         } else if (flag2 == -1) {
             intArray[0] = indexToInt(0, flag1, s);
-            intArray[1] = indexToInt(flag1 +1, s.length(), s);
+            intArray[1] = indexToInt(flag1 + 1, s.length(), s);
             return intArray;
         } else {
             intArray[0] = indexToInt(0, flag1, s);
-            intArray[1] = indexToInt(flag1+1, flag2, s);
-            intArray[2] = indexToInt(flag2+1, s.length(), s);
+            intArray[1] = indexToInt(flag1 + 1, flag2, s);
+            intArray[2] = indexToInt(flag2 + 1, s.length(), s);
             return intArray;
         }
     }
