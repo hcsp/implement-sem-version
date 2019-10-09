@@ -27,45 +27,12 @@ public class Version {
     }
 
     public static int[] parseToIntArray(String s) {
+
         String[] strNums = s.split("\\.");
-        int[] nums = {0,0,0};
+        int[] nums = {0, 0, 0};
         for (int i = 0; i < strNums.length; i++) {
-           nums[i] = Integer.parseInt(strNums[i]);
+            nums[i] = Integer.parseInt(strNums[i]);
         }
         return nums;
     }
-
-//    public static int[] parseToIntArray(String s) {
-//        int[] intArray = {0, 0, 0};
-//        int flag1 = -1, flag2 = -1;
-//        for (int i = 0;  i < s.length();  i++) {
-//            if (s.charAt(i) == '.') {
-//                if (flag1 == -1) {
-//                    flag1 = i;
-//                    continue;
-//                }
-//                flag2 = i;
-//            }
-//        }
-//        if (flag1 == -1) {
-//            intArray[0] = Integer.parseInt(s);
-//            return intArray;
-//        } else if (flag2 == -1) {
-//            intArray[0] = indexToInt(0, flag1, s);
-//            intArray[1] = indexToInt(flag1 + 1, s.length(), s);
-//            return intArray;
-//        } else {
-//            intArray[0] = indexToInt(0, flag1, s);
-//            intArray[1] = indexToInt(flag1 + 1, flag2, s);
-//            intArray[2] = indexToInt(flag2 + 1, s.length(), s);
-//            return intArray;
-//        }
-//    }
-
-//    public static int indexToInt(int a, int b, String s) {
-//        if (a - b != 0) {
-//            return Integer.parseInt(s.substring(a, b));
-//        }
-//        return 0;
-//    }
 }
