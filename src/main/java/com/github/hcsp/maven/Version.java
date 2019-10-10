@@ -26,8 +26,8 @@ public class Version {
         return 0;
     }
 
-    public static int[] arrayChange(String[] string){
-        int[] a = {0,0,0};
+    public static int[] arrayChange(String[] string) {
+        int[] a = {0, 0, 0};
         for (int i = 0; i < string.length; i++) {
             a[i] = Integer.parseInt(string[i]);
         }
