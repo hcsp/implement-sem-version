@@ -17,25 +17,26 @@ public class Version {
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
     public static int compare(String version1, String version2) {
-        ArrayList<String> version1Arr=new ArrayList<>(Arrays.asList(version1.split("\\.")));
-        ArrayList<String> version2Arr=new ArrayList<>(Arrays.asList(version2.split("\\.")));
+        ArrayList<String> version1Arr = new ArrayList<>(Arrays.asList(version1.split("\\.")));
+        ArrayList<String> version2Arr = new ArrayList<>(Arrays.asList(version2.split("\\.")));
         solveVersionString(version1Arr);
         solveVersionString(version2Arr);
-        for(int i=0;i<3;i++){
-            int version1Num=Integer.parseInt(version1Arr.get(i));
-            int version2Num=Integer.parseInt(version2Arr.get(i));
-            int result=Integer.compare(version1Num,version2Num);
-            if(result!=0){
+        for (int i = 0; i < 3; i++) {
+            int version1Num = Integer.parseInt(version1Arr.get(i));
+            int version2Num = Integer.parseInt(version2Arr.get(i));
+            int result = Integer.compare(version1Num, version2Num);
+            if (result != 0) {
                 return result;
             }
         }
         return 0;
     }
-    private static void solveVersionString(ArrayList versionArr){
-        int versionLength=3;
-        int versionArrSize=versionArr.size();
-        if(versionArrSize<versionLength){
-            for(int i=0;i<versionLength-versionArrSize;i++){
+
+    private static void solveVersionString(ArrayList versionArr) {
+        int versionLength = 3;
+        int versionArrSize = versionArr.size();
+        if (versionArrSize < versionLength) {
+            for (int i = 0; i < versionLength - versionArrSize; i++) {
                 versionArr.add("0");
             }
         }
