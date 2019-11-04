@@ -89,13 +89,13 @@ public class Version {
         for (int i = 0; i < count1; i++) {
             s[i] = m[i];
         }
-        return Integer.parseInt(new String(s));
+        return Integer.parseInt(new String(s));                 //此时数组s中的字符元素就是次版本号，将其转为int型
     }
 
     public static int getPatchVersion(String version) {         //获取修订号，并转化为int型
         char[] v = version.toCharArray();
         char[] m = new char[3];
-        int count2 = 0;                                         //假设次本版号字符串最长为3，用count2记录数组m的空间使用情况
+        int count2 = 0;                                         //假设修订号字符串最长为3，用count2记录数组m的空间使用情况
         for (int i = v.length; i > 0; i--) {
             if (v[i - 1] == '.') {
                 for (int j = i; j < v.length; j++) {
@@ -109,6 +109,6 @@ public class Version {
         for (int i = 0; i < count2; i++) {
             s[i] = m[i];
         }
-        return Integer.parseInt(new String(s));
+        return Integer.parseInt(new String(s));               //此时数组s中的字符元素就是修订号，将其转为int型
     }
 }
