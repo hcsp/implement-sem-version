@@ -1,8 +1,5 @@
 package com.github.hcsp.maven;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Version {
     /**
      * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个"语义化版本"
@@ -16,38 +13,5 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
-    static int compare(String version1, String version2) {
-        version1 = version1 == null ? "" : version1.replaceAll("[^\\d.]+", "");
-        version2 = version2 == null ? "" : version2.replaceAll("[^\\d.]+", "");
-
-        String[] version1Array = version1.split("\\.");
-        String[] version2Array = version2.split("\\.");
-
-        List<Integer> version1List = new ArrayList<Integer>();
-        List<Integer> version2List = new ArrayList<Integer>();
-
-        for (String value : version1Array) {
-            version1List.add(Integer.parseInt(value));
-        }
-        for (String s : version2Array) {
-            version2List.add(Integer.parseInt(s));
-        }
-        int size = Math.max(version1List.size(), version2List.size());
-
-        while (version1List.size() < size) {
-            version1List.add(0);
-        }
-        while (version2List.size() < size) {
-            version2List.add(0);
-        }
-        for (int i = 0; i < size; i++) {
-            if (version1List.get(i) > version2List.get(i)) {
-                return 1;
-            }
-            if (version1List.get(i) < version2List.get(i)) {
-                return -1;
-            }
-        }
-        return 0;
-    }
+    public static int compare(String version1, String version2) {}
 }
