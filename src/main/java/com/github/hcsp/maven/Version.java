@@ -1,5 +1,6 @@
 package com.github.hcsp.maven;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,8 +19,11 @@ public class Version {
      */
     public static int compare(String version1, String version2) {
 
-        List<String> array1 = Arrays.asList(version1.split("[.]"));
-        List<String> array2 = Arrays.asList(version2.split("[.]"));
+        List<String> array1 = new ArrayList(Arrays.asList(version1.split("[.]")));
+        List<String> array2 = new ArrayList(Arrays.asList(version2.split("[.]")));
+
+        complementArray(array1);
+        complementArray(array2);
 
         if (array1.equals(array2)) {
             return 0;
@@ -37,7 +41,13 @@ public class Version {
     }
 
 
+    static void complementArray(List<String> array) {
+        for (int i = array.size(); i < 3; i++) {
+            array.add("0");
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(compare("1.100.0", "1.100.0"));
+        System.out.println(compare("1.100", "1.100.0"));
     }
 }
