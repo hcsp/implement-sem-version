@@ -16,8 +16,8 @@ public class Version {
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
     public static int compare(String version1, String version2) {
-        String[] version1Arr = toIntArray(version1);
-        String[] version2Arr = toIntArray(version2);
+        int[] version1Arr = toIntArray(version1);
+        int[] version2Arr = toIntArray(version2);
         int maxLength = Math.max(version1Arr.length, version2Arr.length);
         for (int i = 0; i < maxLength; i++) {
             int item1 = getVersionItem(version1Arr, i);
@@ -29,13 +29,13 @@ public class Version {
         }
         return 0;
     }
-    private static String[] toIntArray(String version) {
-        return version.split(".");
+    private static int[] toIntArray(String version) {
+        return Arrays.stream(version.split("\\.")).mapToInt(Integer::parseInt).toArray();
     }
-    private static int getVersionItem(String[] array, int index) {
+    private static int getVersionItem(int[] array, int index) {
         if (index > array.length - 1) {
             return 0;
         }
-        return Integer.parseInt(array[index]);
+        return array[index];
     }
 }
