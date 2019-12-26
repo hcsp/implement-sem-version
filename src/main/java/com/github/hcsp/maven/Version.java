@@ -16,7 +16,6 @@ public class Version {
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
     public static int compare(String version1, String version2) {
-        int a = 0;
         int[] version1Arr = toIntArray(version1);
         int[] version2Arr = toIntArray(version2);
         int maxLength = Math.max(version1Arr.length, version2Arr.length);
