@@ -27,10 +27,9 @@ public class Version {
             int one = i < v1.length ? Integer.parseInt(v1[i]) : 0;
             int two = i < v2.length ? Integer.parseInt(v2[i]) : 0;
 
-            if(one < two){
+            if (one < two) {
                 return -1;
-            }
-            else if(one > two){
+            } else if (one > two) {
                 return 1;
             }
         }
