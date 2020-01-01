@@ -16,15 +16,12 @@ public class Version {
     private static final int MAX_NUM = 3;
 
     public static int compare(String version1, String version2) {
-        String[] verArray1, verArray2;
-        int v1, v2;
-
-        verArray1 = version1.split("\\.");
-        verArray2 = version2.split("\\.");
+        String[] verArray1 = version1.split("\\.");
+        String[] verArray2 = version2.split("\\.");
 
         for (int idx = 0; idx < MAX_NUM; idx++){
-            v1 = (idx < verArray1.length) ? Integer.parseInt(verArray1[idx]) : 0;
-            v2 = (idx < verArray2.length) ? Integer.parseInt(verArray2[idx]) : 0;
+            int v1 = (idx < verArray1.length) ? Integer.parseInt(verArray1[idx]) : 0;
+            int v2 = (idx < verArray2.length) ? Integer.parseInt(verArray2[idx]) : 0;
 
             if (v1 != v2) {
                 return (v1 > v2) ? 1 : -1;
