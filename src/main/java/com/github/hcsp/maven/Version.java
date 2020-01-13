@@ -2,6 +2,7 @@ package com.github.hcsp.maven;
 
 public class Version {
     private static final int MAX_NUM = 3;
+
     /**
      * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个"语义化版本"
      *
@@ -15,12 +16,12 @@ public class Version {
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
     public static int compare(String version1, String version2) {
-        String[] verArr1,verArr2;
-        int v1,v2;
+        String[] verArr1, verArr2;
+        int v1, v2;
         verArr1 = version1.split("\\.");
         verArr2 = version2.split("\\.");
 
-        for (int idx = 0; idx < MAX_NUM; idx++){
+        for (int idx = 0; idx < MAX_NUM; idx++) {
             v1 = (idx < verArr1.length) ? Integer.parseInt(verArr1[idx]) : 0;
             v2 = (idx < verArr2.length) ? Integer.parseInt(verArr2[idx]) : 0;
 
