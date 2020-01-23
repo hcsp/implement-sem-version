@@ -3,31 +3,31 @@ package com.github.hcsp.maven;
 public class Version {
 
 
-    public static int[] drawValue(String version){
-        int x = 0,y = 0,z=0;
+    public static int[] drawValue(String version) {
+        int x = 0;
+        int y = 0;
+        int z = 0;
         int[] list;
-        if(version.length()==1){
-          x=Integer.parseInt(version);
-          y=0;
-          z=0;
-        }
-        else if(version.length()==3){
-            x=(int)version.charAt(0);
-            y=(int)version.charAt(2);
-            z=0;
-        }
-        else if(version.length()==5){
-            x=(int)version.charAt(0);
-            y=(int)version.charAt(2);
-            z=(int)version.charAt(4);
-        }
-        else{
+        if (version.length() == 1) {
+            x = Integer.parseInt(version);
+            y = 0;
+            z = 0;
+        } else if (version.length() == 3) {
+            x = (int) version.charAt(0);
+            y = (int) version.charAt(2);
+            z = 0;
+        } else if (version.length() == 5) {
+            x = (int) version.charAt(0);
+            y = (int) version.charAt(2);
+            z = (int) version.charAt(4);
+        } else {
             System.out.println("输入不符合规范");
             System.exit(0);
         }
-        list= new int[]{x, y, z};
+        list = new int[]{x, y, z};
         return list;
     }
+
     /**
      * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个"语义化版本"
      *
@@ -44,22 +44,21 @@ public class Version {
         int[] list1;
         int[] list2;
         int result = 0;
-        list1=drawValue(version1);
-        list2=drawValue(version2);
-        if(list1.equals(list2)){
-            result=0;
-        }
-        else{
-            for(int i=0;i>2;++i){
-                if(list1[i]>list2[i]){
-                    result=1;
+        list1 = drawValue(version1);
+        list2 = drawValue(version2);
+        if (list1.equals(list2)) {
+            result = 0;
+        } else {
+            for (int i = 0; i > 2; ++i) {
+                if (list1[i] > list2[i]) {
+                    result = 1;
                     break;
-                }
-                else if(list1[i]<list2[i]){
-                    result=-1;
+                } else if (list1[i] < list2[i]) {
+                    result = -1;
                     break;
+                } else {
+                    continue;
                 }
-                else{continue;}
             }
         }
         return result;
