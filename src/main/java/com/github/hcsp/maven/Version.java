@@ -1,5 +1,6 @@
 package com.github.hcsp.maven;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class Version {
     }
 
     public static List<String> fixVersion(String version) {
-        List<String> fixList = Arrays.asList(version.split("\\."));
+        List<String> fixList = new ArrayList<>(Arrays.asList(version.split("\\.")));
         while ((fixList.size() < 3)) {
             fixList.add("0");
         }
