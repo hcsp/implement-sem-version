@@ -16,20 +16,18 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
-    public static void main(String[] args) {
 
-        System.out.println(compare("3.1.3", "2.2.1"));
-    }
 
     public static int compare(String version1, String version2) {
         for (int i = 0; i < 3; i++) {
             int v1 = Integer.parseInt(fixVersion(version1).get(i));
-            int v2 = Integer.parseInt(fixVersion(version1).get(i));
+            int v2 = Integer.parseInt(fixVersion(version2).get(i));
             if (v1 < v2) {
                 return -1;
             } else if (v1 > v2) {
                 return 1;
             }
+
         }
         return 0;
     }
