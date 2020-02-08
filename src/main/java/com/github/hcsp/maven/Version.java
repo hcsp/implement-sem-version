@@ -27,7 +27,6 @@ public class Version {
             } else if (v1 > v2) {
                 return 1;
             }
-
         }
         return 0;
     }
