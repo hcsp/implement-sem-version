@@ -1,5 +1,9 @@
 package com.github.hcsp.maven;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Version {
     /**
      * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个"语义化版本"
@@ -14,35 +18,24 @@ public class Version {
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
     public static int compare(String version1, String version2) {
-        if (version1.equals(version2)) {
-            return 0;
+        List<String> list1 = new ArrayList<>(Arrays.asList(version1.split("\\.")));
+        List<String> list2 = new ArrayList<>(Arrays.asList(version2.split("\\.")));
+        int maxsize = Math.max(list1.size(), list2.size());
+        int result = 0;
+        while (maxsize > list1.size()) {
+            list1.add("0");
         }
-        String[] version1Array = version1.split("[._]");
-        String[] version2Array = version2.split("[._]");
-        int index = 0;
-        int minLen = Math.min(version1Array.length, version2Array.length);
-        long diff = 0;
-
-        while (index < minLen
-                && (diff = Long.parseLong(version1Array[index])
-                - Long.parseLong(version2Array[index])) == 0) {
-            index++;
+        while (maxsize > list2.size()) {
+            list2.add("0");
         }
-        if (diff == 0) {
-            for (int i = index; i < version1Array.length; i++) {
-                if (Long.parseLong(version1Array[i]) > 0) {
-                    return 1;
-                }
+        for (int i = 0; i < maxsize; i++) {
+            if (list1.equals(list2)) {
+            } else if (Integer.parseInt(list1.get(i)) > Integer.parseInt(list2.get(i))) {
+                result = 1;
+            } else {
+                result = -1;
             }
-
-            for (int i = index; i < version2Array.length; i++) {
-                if (Long.parseLong(version2Array[i]) > 0) {
-                    return -1;
-                }
-            }
-            return 0;
-        } else {
-            return diff > 0 ? 1 : -1;
         }
+        return result;
     }
 }
