@@ -21,7 +21,6 @@ public class Version {
         List<String> list1 = new ArrayList<>(Arrays.asList(version1.split("\\.")));
         List<String> list2 = new ArrayList<>(Arrays.asList(version2.split("\\.")));
         int maxsize = Math.max(list1.size(), list2.size());
-        int result = 0;
         while (maxsize > list1.size()) {
             list1.add("0");
         }
@@ -29,13 +28,12 @@ public class Version {
             list2.add("0");
         }
         for (int i = 0; i < maxsize; i++) {
-            if (list1.equals(list2)) {
+            if (Integer.parseInt(list1.get(i)) < Integer.parseInt(list2.get(i))) {
+                return -1;
             } else if (Integer.parseInt(list1.get(i)) > Integer.parseInt(list2.get(i))) {
-                result = 1;
-            } else {
-                result = -1;
+                return 1;
             }
         }
-        return result;
+        return 0;
     }
 }
