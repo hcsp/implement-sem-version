@@ -7,7 +7,7 @@
 - 自己造一个轮子。
 - 或者通过自己的搜索，使用别人已经造好的轮子（语义化版本这样通用的东西肯定有人实现过），但是要把别人的轮子适配到我们要求的[`Version`](https://github.com/hcsp/implement-sem-version/blob/master/src/main/java/com/github/hcsp/maven/Version.java)中。
 
-在提交Pull Request之前，你应当在本地确保所有代码已经编译通过，并且通过了测试(`mvn clean test`)
+在提交Pull Request之前，你应当在本地确保所有代码已经编译通过，并且通过了测试(`mvn clean verify`)
 
 -----
 注意！我们只允许你修改以下文件，对其他文件的修改会被拒绝：
