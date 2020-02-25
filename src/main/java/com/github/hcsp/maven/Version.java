@@ -14,12 +14,13 @@ public class Version {
 //     * @return -1/0/1 当version1 小于/等于/大于 version2时
 //     **/
     public static int compare(String version1, String version2) {
-        String[] versionArray1 = version1.split("\\.");
-        String[] versionArray2 = version2.split("\\.");
+        String[] v1Array = version1.split("\\.");
+        String[] v2Array = version2.split("\\.");
+        int max = Math.max(v1Array.length, v2Array.length);
 
-        for (int i = 0; i < 3; i++) {
-            int v1 = (i < versionArray1.length) ? Integer.parseInt(versionArray1[i]) : 0;
-            int v2 = (i < versionArray2.length) ? Integer.parseInt(versionArray2[i]) : 0;
+        for (int i = 0; i < max; i++) {
+            int v1 = (i < v1Array.length) ? Integer.parseInt(v1Array[i]) : 0;
+            int v2 = (i < v2Array.length) ? Integer.parseInt(v2Array[i]) : 0;
 
             if (v1 != v2) {
                 return v1 > v2 ? 1 : -1;
