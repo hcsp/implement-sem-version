@@ -25,18 +25,19 @@ public class Version {
         }
         return 0;
     }
+
     private static String[] strSplit(String version) {
-        String subVersion = version.replace(".","");
+        String subVersion = version.replace(".", "");
         int count = version.length() - subVersion.length();
-        if(count == 0){
+        if (count == 0) {
             version += ".0.0";
-        } else if(count == 1){
+        } else if (count == 1) {
             version += ".0";
         }
         return version.split("\\.");
     }
 
     public static void main(String[] args) {
-      System.out.println(compare("1.0" , "1"));
+        System.out.println(compare("1.0", "1"));
     }
 }
