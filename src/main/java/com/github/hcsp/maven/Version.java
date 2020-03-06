@@ -1,6 +1,5 @@
 package com.github.hcsp.maven;
 
-import com.sun.deploy.security.SelectableSecurityManager;
 
 public class Version {
     /**
