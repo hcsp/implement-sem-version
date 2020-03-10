@@ -13,5 +13,44 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
-    public static int compare(String version1, String version2) {}
+    public static int compare(String version1, String version2) {
+        //将x/x.y转换成x.0.0/x.y.0
+        String[] v1 = change2Stand(version1).split("\\.");
+        String[] v2 = change2Stand(version2).split("\\.");
+
+        int l = Integer.parseInt(v1[0]) - Integer.parseInt(v2[0]);
+        int m = Integer.parseInt(v1[1]) - Integer.parseInt(v2[1]);
+        int r = Integer.parseInt(v1[2]) - Integer.parseInt(v2[2]);
+        if (l > 0) {
+            return 1;
+        } else if (l < 0) {
+            return -1;
+        } else {
+            if (m > 0) {
+                return 1;
+            } else if (m < 0) {
+                return -1;
+            } else {
+                if (r > 0) {
+                    return 1;
+                } else if (r < 0) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        }
+    }
+
+    public static String change2Stand(String version) {
+        StringBuilder standard = new StringBuilder(version);
+        String[] splits = version.split("\\.");
+        if (splits.length == 1) {
+            standard.append(".0.0");
+        }
+        if (splits.length == 2) {
+            standard.append(".0");
+        }
+        return standard.toString();
+    }
 }
