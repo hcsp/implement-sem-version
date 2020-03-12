@@ -13,5 +13,35 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
-    public static int compare(String version1, String version2) {}
+    public static int compare(String version1, String version2) {
+        int result = 0;
+        int[] version1Arr = fillVersionStr(version1);
+        int[] version2Arr = fillVersionStr(version2);
+        if (version2Arr[0] == version1Arr[0]) {
+            if (version2Arr[1] == version1Arr[1]) {
+                if (version2Arr[2] != version1Arr[2]) {
+                    result = version1Arr[2] > version2Arr[2] ? 1 : -1;
+                }
+            } else {
+                result = version1Arr[1] > version2Arr[1] ? 1 : -1;
+            }
+        } else {
+            result = version1Arr[0] > version2Arr[0] ? 1 : -1;
+        }
+        return result;
+    }
+
+    private static int[] fillVersionStr(String versionStr) {
+        String[] arr = versionStr.split("\\.");
+        int majorVersionNo = Integer.parseInt(arr[0]);
+        int minorVersionNo = 0;
+        int revisionNo = 0;
+        if (arr.length == 2) {
+            minorVersionNo = Integer.parseInt(arr[1]);
+        } else if (arr.length == 3) {
+            minorVersionNo = Integer.parseInt(arr[1]);
+            revisionNo = Integer.parseInt(arr[2]);
+        }
+        return new int[]{majorVersionNo, minorVersionNo, revisionNo};
+    }
 }
