@@ -17,16 +17,11 @@ public class Version {
         int result = 0;
         int[] version1Arr = fillVersionStr(version1);
         int[] version2Arr = fillVersionStr(version2);
-        if (version2Arr[0] == version1Arr[0]) {
-            if (version2Arr[1] == version1Arr[1]) {
-                if (version2Arr[2] != version1Arr[2]) {
-                    result = version1Arr[2] > version2Arr[2] ? 1 : -1;
-                }
-            } else {
-                result = version1Arr[1] > version2Arr[1] ? 1 : -1;
+        for (int i = 0; i < version1Arr.length; i++) {
+            if (version2Arr[i] != version1Arr[i]) {
+                result = version1Arr[i] > version2Arr[i] ? 1 : -1;
+                break;
             }
-        } else {
-            result = version1Arr[0] > version2Arr[0] ? 1 : -1;
         }
         return result;
     }
