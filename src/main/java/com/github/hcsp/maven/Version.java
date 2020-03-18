@@ -14,38 +14,38 @@ public class Version {
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
     public static int compare(String version1, String version2) {
-        String[] version1Strs = version1.split(".");
-        String[] version2Strs = version2.split(".");
+        String[] version1Strs = version1.split("\\.");
+        String[] version2Strs = version2.split("\\.");
         Integer[] help1 = new Integer[version1Strs.length + 2];
         Integer[] help2 = new Integer[version2Strs.length + 2];
-        for(int i = 0;i < help1.length;i++){
-            if(i < version1Strs.length){
+        for (int i = 0; i < help1.length; i++) {
+            if (i < version1Strs.length) {
                 help1[i] = Integer.parseInt(version1Strs[i]);
-            }else{
+            } else {
                 help1[i] = 0;
             }
         }
-        for(int i = 0;i < help2.length;i++){
-            if(i < version2Strs.length){
+        for (int i = 0; i < help2.length; i++) {
+            if (i < version2Strs.length) {
                 help2[i] = Integer.parseInt(version2Strs[i]);
-            }else{
+            } else {
                 help2[i] = 0;
             }
         }
-        for(int i = 0;i < 3;i++){
-            if(i == 2 && help1[i] == help2[i]){
-                return 0;
+        for (int i = 0; i < 3; i++) {
+            if (i == 2) {
+                if(help1[i] == help2[i]){
+                    return 0;
+                }else if(help1[i] > help2[i]){
+                    return 1;
+                }else{
+                    return -1;
+                }
             }
-            if(i == 2 && help1[i] > help2[i]){
+            if (help1[i] > help2[i]) {
                 return 1;
             }
-            if(i == 2 && help1[i] < help2[i]){
-                return -1;
-            }
-            if(help1[i] > help2[i]){
-                return 1;
-            }
-            if(help1[i] < help2[i]){
+            if (help1[i] < help2[i]) {
                 return -1;
             }
         }
