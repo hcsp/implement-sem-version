@@ -16,37 +16,11 @@ public class Version {
     public static int compare(String version1, String version2) {
         String[] version1Strs = version1.split("\\.");
         String[] version2Strs = version2.split("\\.");
-        Integer[] help1 = new Integer[version1Strs.length + 2];
-        Integer[] help2 = new Integer[version2Strs.length + 2];
-        for (int i = 0; i < help1.length; i++) {
-            if (i < version1Strs.length) {
-                help1[i] = Integer.parseInt(version1Strs[i]);
-            } else {
-                help1[i] = 0;
-            }
-        }
-        for (int i = 0; i < help2.length; i++) {
-            if (i < version2Strs.length) {
-                help2[i] = Integer.parseInt(version2Strs[i]);
-            } else {
-                help2[i] = 0;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            if (i == 2) {
-                if(help1[i] == help2[i]){
-                    return 0;
-                }else if(help1[i] > help2[i]){
-                    return 1;
-                }else{
-                    return -1;
-                }
-            }
-            if (help1[i] > help2[i]) {
-                return 1;
-            }
-            if (help1[i] < help2[i]) {
-                return -1;
+        for(int i = 0;i < 3;i++){
+            int n1 = version1Strs.length > i ? Integer.parseInt(version1Strs[i]) : 0;
+            int n2 = version2Strs.length > i ? Integer.parseInt(version2Strs[i]) : 0;
+            if(n1 != n2){
+                return n1 > n2 ? 1 : -1;
             }
         }
         return 0;
