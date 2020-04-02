@@ -14,21 +14,19 @@ public class Version {
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
     public static int compare(String version1, String version2) {
-        Integer a = Integer.parseInt(version1.replace(".", ""));
-        Integer b = Integer.parseInt(version2.replace(".", ""));
+        version1 += ".0.0";
+        version2 += ".0.0";
 
-        if (a < 10) {
-            a *= 100;
-        }else if (a < 100) {
-            a *= 10;
+        String[] a = version1.split("\\.");
+        String[] b = version2.split("\\.");
+
+        for (int i = 0; i < 3; i++) {
+            if (Integer.parseInt(a[i]) == Integer.parseInt(b[i])) {
+                continue;
+            }
+            return Integer.parseInt(a[i]) < Integer.parseInt(b[i]) ? -1 : 1;
         }
 
-        if (b < 10) {
-            b *= 100;
-        } else if (b < 100) {
-            b *= 10;
-        }
-
-        return a.compareTo(b);
+        return 0;
     }
 }
