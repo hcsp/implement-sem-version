@@ -1,10 +1,8 @@
 package com.github.hcsp.maven;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class Version {
     /**
@@ -73,7 +71,5 @@ public class Version {
             }
         }
         return 0;
-
     }
-
 }
