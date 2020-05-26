@@ -34,10 +34,8 @@ public class Version {
         for (int i = 0; i < length; i++) {
             integerSplit[i] = Integer.parseInt(stringSplit[i]);
         }
-        if (length != VERSION_STRING_LENGTH) {
-            for (int i = length; i < VERSION_STRING_LENGTH; i++) {
-                integerSplit[i] = 0;
-            }
+        for (int i = length; i < VERSION_STRING_LENGTH; i++) {
+            integerSplit[i] = 0;
         }
         return integerSplit;
     }
