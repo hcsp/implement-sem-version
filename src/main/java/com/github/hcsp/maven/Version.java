@@ -63,7 +63,7 @@ public class Version {
             if (Long.parseLong(version1List.get(i)) > Long.parseLong(version2List.get(i))) {
                 return 1;
             }
-                return -1;
+            return -1;
         }
         return 0;
     }
