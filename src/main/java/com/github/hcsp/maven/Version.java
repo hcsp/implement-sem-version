@@ -1,9 +1,6 @@
 package com.github.hcsp.maven;
 
-import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
-import org.omg.PortableInterceptor.INACTIVE;
 
-import java.util.ArrayList;
 
 public class Version {
     /**
