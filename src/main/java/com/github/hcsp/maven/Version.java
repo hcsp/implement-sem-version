@@ -1,7 +1,6 @@
 package com.github.hcsp.maven;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Version {
     /**
@@ -49,4 +48,7 @@ public class Version {
         }
     }
 
+    public static void main(String[] args) {
+        System.out.println(compare("10.2","10.2.0"));
+    }
 }
