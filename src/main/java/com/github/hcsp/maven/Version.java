@@ -18,18 +18,15 @@ public class Version {
     public static int compare(String version1, String version2) {
         String[] str1 = version1.split("\\.");
         String[] str2 = version2.split("\\.");
-        int maxLength = Math.max(str1.length,str2.length);
-        for (int i = 0; i <maxLength ; i++) {
-            int value1 = i<str1.length? Integer.parseInt(str1[i]) :0;
-            int value2 = i<str2.length? Integer.parseInt(str2[i]) :0;
-            if (value1!=value2){
-                return value1>value2?1:-1;
+        int maxLength = Math.max(str1.length, str2.length);
+        for (int i = 0; i < maxLength; i++) {
+            int value1 = i < str1.length ? Integer.parseInt(str1[i]) : 0;
+            int value2 = i < str2.length ? Integer.parseInt(str2[i]) : 0;
+            if (value1 != value2) {
+                return value1 > value2 ? 1 : -1;
             }
         }
         return 0;
-    }
-    public static void main(String[] args) {
-        System.out.println(  Version.compare("2.0.0","2"));
     }
 };
 
