@@ -1,7 +1,4 @@
 package com.github.hcsp.maven;
-
-import java.util.Arrays;
-
 public class Version {
     /**
      * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个"语义化版本"
