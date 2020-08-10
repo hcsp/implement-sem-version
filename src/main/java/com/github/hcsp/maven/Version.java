@@ -26,6 +26,7 @@ public class Version {
                 return value1 > value2 ? 1 : -1;
             }
         }
+
         return 0;
     }
 };
