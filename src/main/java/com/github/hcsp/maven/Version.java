@@ -1,4 +1,5 @@
 package com.github.hcsp.maven;
+
 public class Version {
     /**
      * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个"语义化版本"
@@ -12,19 +13,5 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
-    public static int compare(String version1, String version2) {
-        String[] str1 = version1.split("\\.");
-        String[] str2 = version2.split("\\.");
-        int maxLength = Math.max(str1.length, str2.length);
-        for (int i = 0; i < maxLength; i++) {
-            int value1 = i < str1.length ? Integer.parseInt(str1[i]) : 0;
-            int value2 = i < str2.length ? Integer.parseInt(str2[i]) : 0;
-            if (value1 != value2) {
-                return value1 > value2 ? 1 : -1;
-            }
-        }
-        return 0;
-    }
-};
-
-
+    public static int compare(String version1, String version2) {}
+}
