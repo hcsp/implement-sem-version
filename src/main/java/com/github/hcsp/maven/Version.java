@@ -38,8 +38,7 @@ public class Version {
     }
 
     private static String getAllVersion(String version) {
-        version = version.replaceAll(",", "");
-        String[] versionArr = version.split("\\.");
+        String[] versionArr = version.replaceAll(",", "").split("\\.");
         String newVersion = versionArr[0];
         for (int i = 1; i <= 2; i++) {
             if (versionArr.length > i) {
