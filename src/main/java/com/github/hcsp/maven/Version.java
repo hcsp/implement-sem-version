@@ -13,41 +13,19 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
+    private static final int MAX_LENGTH = 3;
+
     public static int compare(String version1, String version2) {
-        String[] version1Arr = getAllVersion(version1).split("\\.");
-        String[] version2Arr = getAllVersion(version2).split("\\.");
-        int res = compareInt(Integer.parseInt(version1Arr[0]), Integer.parseInt(version2Arr[0]));
-        if (res != 0) {
-            return res;
-        }
-        res = compareInt(Integer.parseInt(version1Arr[1]), Integer.parseInt(version2Arr[1]));
-        if (res != 0) {
-            return res;
-        }
-        return compareInt(Integer.parseInt(version1Arr[2]), Integer.parseInt(version2Arr[2]));
-    }
-
-    private static int compareInt(int version1, int version2) {
-        if (version1 < version2) {
-            return -1;
-        } else if (version1 > version2) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-
-    private static String getAllVersion(String version) {
-        String[] versionArr = version.replaceAll(",", "").split("\\.");
-        String newVersion = versionArr[0];
-        for (int i = 1; i <= 2; i++) {
-            if (versionArr.length > i) {
-                newVersion += "." + versionArr[i];
-            } else {
-                newVersion += ".0";
+        String[] version1Arr = version1.split("\\.");
+        String[] version2Arr = version2.split("\\.");
+        for (int i = 0; i < MAX_LENGTH; i++) {
+            int v1 = version1Arr.length > i ? Integer.parseInt(version1Arr[i]) : 0;
+            int v2 = version2Arr.length > i ? Integer.parseInt(version2Arr[i]) : 0;
+            if (v1 != v2) {
+                return v1 < v2 ? -1 : 1;
             }
         }
-        return newVersion;
+        return 0;
     }
 
 }
