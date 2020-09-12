@@ -1,4 +1,5 @@
 package com.github.hcsp.maven;
+import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 
 public class Version {
     /**
@@ -13,5 +14,10 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
-    public static int compare(String version1, String version2) {}
+    public static int compare(String version1, String version2) {
+        DefaultArtifactVersion ver1 = new DefaultArtifactVersion(version1);
+        DefaultArtifactVersion ver2 = new DefaultArtifactVersion(version2);
+
+        return ver1.compareTo(ver2);
+    }
 }
