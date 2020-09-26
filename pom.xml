@@ -31,11 +31,6 @@
                     <name>aliyun maven</name>
                     <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
                 </repository>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub OWNER Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/gravitation1/semanticversion</url>
-                </repository>
             </repositories>
         </profile>
         <profile>
@@ -53,20 +48,14 @@
                     <name>mavenCentral</name>
                     <url>https://repo.maven.apache.org/maven2</url>
                 </repository>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub OWNER Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/gravitation1/semanticversion</url>
-                </repository>
             </repositories>
         </profile>
     </profiles>
     <dependencies>
         <dependency>
-            <groupId>io.github.gravitation1</groupId>
-            <artifactId>semanticversion</artifactId>
-            <version>1.0.0</version>
-            <scope>compile</scope>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>3.6.3</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -93,7 +82,6 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
