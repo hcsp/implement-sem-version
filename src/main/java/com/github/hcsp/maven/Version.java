@@ -22,7 +22,7 @@ public class Version {
         int y;
         int z;
 
-        public Ver(String str) {
+        private Ver(String str) {
             //可以假定传入的字符串一定是合法的语义化版本
             String[] strings = str.split("\\.");
             x = Integer.parseInt(strings[0]);
