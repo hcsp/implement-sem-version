@@ -28,9 +28,5 @@ public class Version {
         return 0;
     }
 
-    public static void main(String[] args) {
-        System.out.println(compare("1","1.0.0"));
-    }
-
 
 }
