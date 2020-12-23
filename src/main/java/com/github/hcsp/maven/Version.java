@@ -1,5 +1,9 @@
 package com.github.hcsp.maven;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Version {
     /**
      * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个"语义化版本"
@@ -13,5 +17,27 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
-    public static int compare(String version1, String version2) {}
+    public static int compare(String version1, String version2) {
+        List<String> v1 = createFixedSizeList(version1, 3);
+        List<String> v2 = createFixedSizeList(version2, 3);
+
+        for (int i = 0; i < 3; i++) {
+            int n1 = Integer.parseInt(v1.get(i));
+            int n2 = Integer.parseInt(v2.get(i));
+            if (n1 > n2) {
+                return 1;
+            } else if (n1 < n2) {
+                return -1;
+            }
+        }
+        return 0;
+    }
+
+    public static List<String> createFixedSizeList(String str, int length) {
+        List<String> list = new ArrayList<>(Arrays.asList(str.split("\\.")));
+        while (list.size() < length) {
+            list.add("0");
+        }
+        return list;
+    }
 }
