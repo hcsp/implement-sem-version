@@ -20,7 +20,7 @@ public class Version {
         String[] version1Arr = version1.split("\\.");
         String[] version2Arr = version2.split("\\.");
         for (int i = 0; i < MAX_LENGTH; ++i) {
-            int v1 = version1Arr.length > i ? Integer.parseInt(version2Arr[i]) : 0;
+            int v1 = version1Arr.length > i ? Integer.parseInt(version1Arr[i]) : 0;
             int v2 = version2Arr.length > i ? Integer.parseInt(version2Arr[i]) : 0;
             if (v1 != v2) {
                 return v1 > v2 ? 1 : -1;
