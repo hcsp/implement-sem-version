@@ -1,6 +1,6 @@
 package com.github.hcsp.maven;
 
-import org.apache.maven.artifact.versioning.ComparableVersion;
+import com.vdurmont.semver4j.Semver;
 
 public class Version {
     /**
@@ -16,6 +16,6 @@ public class Version {
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
     public static int compare(String version1, String version2) {
-        return new ComparableVersion(version1).compareTo(new ComparableVersion(version2));
+        return new Semver(version1).compareTo(new Semver(version2));
     }
 }
