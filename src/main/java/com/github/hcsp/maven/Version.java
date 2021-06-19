@@ -1,8 +1,6 @@
 package com.github.hcsp.maven;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import org.apache.maven.artifact.versioning.ComparableVersion;
 
 public class Version {
     /**
@@ -18,37 +16,6 @@ public class Version {
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
     public static int compare(String version1, String version2) {
-        List<Integer> version1Array = getFullVersionArray(version1);
-        List<Integer> version2Array = getFullVersionArray(version2);
-        int result = 0;
-
-        for (int i = 0; i < version1Array.size(); i++) {
-            if (version1Array.get(i) > version2Array.get(i)) {
-                result = 1;
-                break;
-            } else if (version1Array.get(i) < version2Array.get(i)) {
-                result = -1;
-                break;
-            }
-        }
-
-        return result;
-    }
-
-    public static List<Integer> getFullVersionArray(String version) {
-        List<Integer> versionList = new ArrayList<>();
-        for (String s : version.split("\\.")) {
-            versionList.add(Integer.valueOf(s));
-        }
-        int length = versionList.size();
-        if (length == 0) {
-            throw new Error("This is Error Version");
-        } else if (length == 1) {
-            List<Integer> appendList = Arrays.asList(0, 0);
-            versionList.addAll(appendList);
-        } else if (length == 2) {
-            versionList.add(0);
-        }
-        return versionList;
+        return new ComparableVersion(version1).compareTo(new ComparableVersion(version2));
     }
 }
