@@ -1,7 +1,5 @@
 package com.github.hcsp.maven;
 
-import org.apache.maven.artifact.versioning.ComparableVersion;
-
 public class Version {
     /**
      * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个"语义化版本"
@@ -15,15 +13,5 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
-    public static int compare(String version1, String version2) {
-        return new ComparableVersion(version1).compareTo(new ComparableVersion(version2));
-    }
-
-
-    public static void main(String[] args) {
-        System.out.println(compare("1", "1.1"));
-        System.out.println(compare("1.1", "1.1.1"));
-        System.out.println(compare("1.1.1-alpha", "1.1.1-m2"));
-    }
-
+    public static int compare(String version1, String version2) {}
 }
