@@ -17,9 +17,10 @@ public class Version {
      */
     public static int compare(String version1, String version2) {
 
-        Semver sem1 = new Semver(version1);
 
-        Semver sem2 = new Semver(version2);
+        Semver sem1 = new Semver(versionCompletion(version1));
+
+        Semver sem2 = new Semver(versionCompletion(version2));
 
         if (sem1.isGreaterThan(sem2)) {
             return 1;
@@ -28,6 +29,20 @@ public class Version {
         }
         return 0;
 
+    }
+
+    //将version补充完整
+    public static String versionCompletion(String version) {
+        if (version.split("\\.").length == 1) {
+            return (version + ".0.0");
+        } else if (version.split("\\.").length == 2) {
+            return (version + ".0");
+        }
+        return version;
 
     }
+
+
 }
+
+
