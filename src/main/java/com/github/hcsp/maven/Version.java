@@ -13,5 +13,23 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
-    public static int compare(String version1, String version2) {}
+    public static int compare(String version1, String version2) {
+        com.github.zafarkhaja.semver.Version v1 = com.github.zafarkhaja.semver.Version.valueOf(build(version1));
+        com.github.zafarkhaja.semver.Version v2 = com.github.zafarkhaja.semver.Version.valueOf(build(version2));
+        return v1.compareTo(v2);
+    }
+
+    public static String build(String version) {
+        String[] arr = version.split("\\.");
+
+        switch (arr.length) {
+            case 0:
+                return "0.0.0";
+            case 1:
+                return arr[0] + ".0.0";
+            case 2:
+                return arr[0] + "." + arr[1] + ".0";
+        }
+        return arr[0] + "." + arr[1] + "." + arr[2];
+    }
 }
