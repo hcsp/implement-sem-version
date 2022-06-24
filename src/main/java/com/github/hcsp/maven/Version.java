@@ -1,5 +1,7 @@
 package com.github.hcsp.maven;
 
+import java.util.ArrayList;
+
 public class Version {
     /**
      * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个"语义化版本"
@@ -13,25 +15,23 @@ public class Version {
      * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本
      * @return -1/0/1 当version1 小于/等于/大于 version2时
      */
+    private static final int MaxNumber = 3;
+
     public static int compare(String version1, String version2) {
-        String[] versionArr1 = version1.split("\\.");
-        String[] versionArr2 = version2.split("\\.");
-        int ver1 = 0;
-        int ver2 = 0;
-        for (int i = 0; i < 3; i++) {
-            if (i < versionArr1.length) {
-                ver1 = ver1 * 10 + Integer.valueOf(versionArr1[i]);
-            } else {
-                ver1 = ver1 * 10;
-            }
-            if (i < versionArr2.length) {
-                ver2 = ver2 * 10 + Integer.valueOf(versionArr2[i]);
-            } else {
-                ver2 = ver2 * 10;
+
+        String[] arr1 = version1.split("\\.");
+        String[] arr2 = version2.split("\\.");
+
+        for (int i = 0; i < MaxNumber; i++) {
+            int num1 = arr1.length > i? Integer.parseInt(arr1[i]): 0;
+            int num2 = arr2.length > i? Integer.parseInt(arr2[i]): 0;
+            if (num1 != num2){
+                return num1<num2?-1:1;
             }
         }
-        return Integer.compare(ver1, ver2);
+        return 0;
     }
 
-
 }
+
+
