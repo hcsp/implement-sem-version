@@ -1,6 +1,5 @@
 package com.github.hcsp.maven;
 
-import java.util.ArrayList;
 
 public class Version {
     /**
